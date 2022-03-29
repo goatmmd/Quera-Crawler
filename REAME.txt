@@ -1,0 +1,3 @@
+Do you want the newest job offer in iran ? 
+Just run this code and read from mongoDB , enjoy it 
+in this project we used BS4, requests and mongoDB(python) 
