@@ -1,10 +1,11 @@
 import requests
 from abc import ABC, abstractmethod
-from parsercrawler import JobsoffersParser
+from parsercrawler import JobsOffersParser
 from bs4 import BeautifulSoup
 from storage import MongoDataBase
 from config import BASE_LINK, STORAGE_TYPE
 from adv import get
+
 
 class BaseCrawler(ABC):
     def __init__(self):
@@ -14,7 +15,6 @@ class BaseCrawler(ABC):
     def __set_storage():
         if STORAGE_TYPE == 'mongo':
             return MongoDataBase()
-
 
     @abstractmethod
     def start(self, store=False):
@@ -30,11 +30,10 @@ class LinkCrawler(BaseCrawler):
         super().__init__()
         self.link = link
 
-
     @staticmethod
     def find_links(html_doc):
         soup = BeautifulSoup(html_doc, 'html.parser')
-        links = soup.find_all('a', attrs={'class': 'chakra-link css-f4h6uy'})
+        links = soup.find_all('a', attrs={'class': 'chakra-link css-msbdq'})
         return links
 
     def start_crawl_pages(self, url):
@@ -72,7 +71,7 @@ class DataCrawler(BaseCrawler):
     def __init__(self):
         super().__init__()
         self.links = self.__load_links()
-        self.pars = JobsoffersParser()
+        self.pars = JobsOffersParser()
 
     def __load_links(self):
         return self.storage.load()

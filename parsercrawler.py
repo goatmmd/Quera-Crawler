@@ -2,7 +2,7 @@ import bs4
 from bs4 import BeautifulSoup
 
 
-class JobsoffersParser:
+class JobsOffersParser:
     def __init__(self):
         self.soup = None
 
@@ -16,7 +16,7 @@ class JobsoffersParser:
 
     @property
     def company_name(self):
-        remote_tag = self.soup.find('a', attrs={"class": "chakra-link css-f4h6uy"})
+        remote_tag = self.soup.find('a', attrs={"class": "chakra-link css-spn4bz"})
         if remote_tag:
             return remote_tag.text
 
@@ -28,7 +28,7 @@ class JobsoffersParser:
 
     @property
     def skil_tage(self):
-        skiltage = self.soup.find('div', attrs={'title': "تکنولوژی اصلی"})
+        skiltage = self.soup.find('h2', attrs={'class': "chakra-heading css-10lguty"})
         if skiltage:
             return skiltage.text
 
